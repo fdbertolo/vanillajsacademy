@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Random Ron</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style type="text/css">
+			body {
+				margin: 0 auto;
+				max-width: 40em;
+				width: 88%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>Random Ron</h1>
+
+		<blockquote>
+            <h3 id="quote"></h3>
+        </blockquote>
+
+		<p>
+			<button id="get-quote">More Ron</button>
+		</p>
+
+
+<script>
+    let quote = document.querySelector('#quote');
+    let getQuote = document.querySelector('#get-quote');
+    let endpoint = 'https://ron-swanson-quotes.herokuapp.com/v2/quotes';
+
+    function getJSON (response) {
+    return response.ok ? response.json() : Promise.reject(response);
+    }
+
+    function showQuote (quotes) {
+    quote.textContent = quotes[0];
+    }
+
+    function showError () {
+    quote.textContent = 'I tried to find a quote, but something went wrong.';
+    }
+
+    function fetchQuote () {
+     fetch(endpoint)
+        .then(getJSON)
+        .then(showQuote)
+        .catch(showError);
+    }
+
+    fetchQuote();
+
+    getQuote.addEventListener('click', fetchQuote);
+</script>
+	</body>
+</html>

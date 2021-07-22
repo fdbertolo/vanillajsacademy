@@ -60,15 +60,15 @@
       let passwordInputs = document.querySelectorAll(['#current-password', '#new-password']);
       let toggle = document.querySelector('#show-passwords');
 
-			toggle.addEventListener('click', function () {
+		toggle.addEventListener('click', function () {
 
-        for (let passwordInput of passwordInputs) {
-            if (toggle.checked) {
-              passwordInput.type = 'text';
-            } else {
-              passwordInput.type = 'password';
-            }
-        }
+			for (let passwordInput of passwordInputs) {
+				if (toggle.checked) {
+				passwordInput.type = 'text';
+				} else {
+				passwordInput.type = 'password';
+				}
+			}
        
        });
 		</script>
